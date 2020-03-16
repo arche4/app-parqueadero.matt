@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import AppNavBar from './componentes/layout/AppNavbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import theme from './theme/theme';
+import  Grid  from '@material-ui/core/Grid';
+import Login from './componentes/seguridad/Login';
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <MuiThemeProvider theme={theme}>
+          <AppNavBar />
+          <Grid container>
+            <Switch>
+              <Route path="/" exact component={Login}></Route>
+            </Switch>
+          </Grid>
+        </MuiThemeProvider>
+      </Router>
+    );
+  }
 }
-
 export default App;
